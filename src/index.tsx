@@ -8,15 +8,27 @@
 
 //   document.body.appendChild(component());
 
-import React from "react";
+import React, { useState } from "react";
 import ReactDom from "react-dom";
+import styled from "styled-components";
 
-function component() {
+const CustomButton = styled.button`
+  background-color: red;
+  color: green;
+`;
+
+function Component() {
+  const [name, setName] = useState("Bob");
+
   return (
     <div>
-      <br />Hello react
+      <br />
+      Hello {name}
+      <CustomButton onClick={e => setName(name[0] === "A" ? "Bill" : "Alice")}>
+        Click me!!
+      </CustomButton>
     </div>
   );
 }
 
-ReactDom.render(component(), document.body);
+ReactDom.render(<Component />, document.body);
